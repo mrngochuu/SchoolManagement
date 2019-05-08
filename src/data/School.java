@@ -8,6 +8,7 @@ package data;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import util.File;
 import util.MyToys;
 
 /**
@@ -196,5 +197,20 @@ public class School {
         for (ClassRoom classRoom : classList) {
             classRoom.showStudentList();
         }
+    }
+    
+    public void exportFile() {
+        if (classList.isEmpty()) {
+            System.out.println("Class List is empty.");
+            return;
+        }
+        
+        String fileName;
+        fileName = MyToys.getAString("Input file name to export: ", "File name is required.");
+        File.exportFile(fileName, "===========" + this.getName() + " University ===========");
+        for (ClassRoom classRoom : classList) {
+            File.exportFile(fileName, classRoom);
+        }
+        System.out.println("File is exported successfully.");
     }
 }

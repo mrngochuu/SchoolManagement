@@ -24,9 +24,10 @@ public class Main {
         menu.addNewOption("2. Update Class profile.");
         menu.addNewOption("3. Remove Class profile.");
         menu.addNewOption("4. Show all Classes profile.");
-        menu.addNewOption("5. Show School profile.");
+        menu.addNewOption("5. Show all Students profile.");
         menu.addNewOption("6. Select a Class.");
-        menu.addNewOption("7. Show all students profile.");
+        menu.addNewOption("7. Show School profile.");
+        menu.addNewOption("8. Export All students profile to file.");
         menu.addNewOption((menu.getOptionToExit() + 1) + ". Exit program.");
 
         School fpt = new School("FPT", "Quang Trung Software Park");
@@ -52,7 +53,7 @@ public class Main {
                     fpt.showClassList();
                     break;
                 case 5:
-                    fpt.showDetails();
+                    fpt.showAllStudents();
                     break;
                 case 6:
                     classRoom = fpt.searchClassObjectById();
@@ -87,9 +88,12 @@ public class Main {
                         } while (choiceClass != menuClass.getOptionToExit());
                     }
                     break;
-                    case 7:
-                        fpt.showAllStudents();
-                        break;
+                case 7:
+                    fpt.showDetails();
+                    break;
+                case 8:
+                    fpt.exportFile();
+                    break;
             }
         } while (choiceSchool != menu.getOptionToExit());
     }
