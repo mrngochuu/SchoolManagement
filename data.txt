@@ -1,0 +1,8 @@
+===========FPT University ===========
+
+Class{id=SE1324, name=IT, studentList=[Student{id=SE130557, name=Do Ngoc Huu, yob=1995}]}
+
+Class{id=SE1323, name=6, studentList=[Student{id=SE130222, name=SE, yob=1992}, Student{id=SE130332, name=Nguyen Thi Thanh Dang, yob=1999}, Student{id=SE130333, name=Do Ngoc Huy, yob=1993}]}
+
+Class{id=SE1300, name=IT, studentList=[]}
+

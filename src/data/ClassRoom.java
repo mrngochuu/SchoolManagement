@@ -14,7 +14,7 @@ import util.MyToys;
  *
  * @author Ngoc Huu
  */
-public class ClassRoom implements Comparable<ClassRoom>{
+public class ClassRoom implements Comparable<ClassRoom> {
 
     private String id;
     private String name;
@@ -24,6 +24,8 @@ public class ClassRoom implements Comparable<ClassRoom>{
         this.id = id;
         this.name = name;
     }
+    
+    
 
     public String getId() {
         return id;
@@ -47,8 +49,8 @@ public class ClassRoom implements Comparable<ClassRoom>{
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
-    } 
-    
+    }
+
     @Override
     public int compareTo(ClassRoom o) {
         return this.id.compareToIgnoreCase(o.id);
@@ -80,6 +82,10 @@ public class ClassRoom implements Comparable<ClassRoom>{
 
         studentList.add(new Student(id, name, yob));
         System.out.println("New student profile is added successfully.");
+    }
+
+    public void addNewStudent(String id, String name, int yob) {
+        studentList.add(new Student(id, name, yob));
     }
 
     public void searchStudentById() {
@@ -170,7 +176,7 @@ public class ClassRoom implements Comparable<ClassRoom>{
             System.out.println("Student List of the Class " + this.id + " is empty.");
             return;
         }
-        
+
         Collections.sort(studentList);
         System.out.println("Students list of class " + this.id + ": ");
         for (Student student : studentList) {

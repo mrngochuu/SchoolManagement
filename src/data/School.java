@@ -135,6 +135,10 @@ public class School {
         System.out.println("New class profile is added successfully.");
     }
 
+    public void addNewClass(String id, String name) {
+        classList.add(new ClassRoom(id, name));
+    }
+
     public void removeClassById() {
         if (classList.isEmpty()) {
             System.out.println("Class List is empty.");
@@ -187,7 +191,7 @@ public class School {
             classRoom.showDetails();
         }
     }
-    
+
     public void showAllStudents() {
         if (classList.isEmpty()) {
             System.out.println("Class List is empty.");
@@ -198,13 +202,8 @@ public class School {
             classRoom.showStudentList();
         }
     }
-    
+
     public void exportFile() {
-        if (classList.isEmpty()) {
-            System.out.println("Class List is empty.");
-            return;
-        }
-        
         String fileName;
         fileName = MyToys.getAString("Input file name to export: ", "File name is required.");
         File.exportFile(fileName, "===========" + this.getName() + " University ===========");
@@ -212,5 +211,11 @@ public class School {
             File.exportFile(fileName, classRoom);
         }
         System.out.println("File is exported successfully.");
+    }
+    
+    public School importFile() {
+        String fileName;
+        fileName = MyToys.getAString("Input file name to import: ", "File name is required.");
+        return File.importFile(fileName);
     }
 }

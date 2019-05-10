@@ -5,8 +5,8 @@
  */
 package ui;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 import util.MyToys;
 
 /**
@@ -16,13 +16,17 @@ import util.MyToys;
 public class Menu {
 
     private String menuTitle;
-    private Set<String> optionsList = new TreeSet<>();
+    private List<String> optionsList = new ArrayList<>();
 
     public Menu(String menuTitle) {
         this.menuTitle = menuTitle;
     }
 
     public void addNewOption(String newOption) {
+        for (String string : optionsList) {
+            if(string.contains(newOption))
+                return;
+        }
         optionsList.add(newOption);
     }
 

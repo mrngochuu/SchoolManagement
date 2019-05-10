@@ -27,7 +27,8 @@ public class Main {
         menu.addNewOption("5. Show all Students profile.");
         menu.addNewOption("6. Select a Class.");
         menu.addNewOption("7. Show School profile.");
-        menu.addNewOption("8. Export All students profile to file.");
+        menu.addNewOption("8. Export file.");
+        menu.addNewOption("9. Import file.");
         menu.addNewOption((menu.getOptionToExit() + 1) + ". Exit program.");
 
         School fpt = new School("FPT", "Quang Trung Software Park");
@@ -93,6 +94,9 @@ public class Main {
                     break;
                 case 8:
                     fpt.exportFile();
+                    break;
+                case 9:
+                    fpt = fpt.importFile();
                     break;
             }
         } while (choiceSchool != menu.getOptionToExit());
