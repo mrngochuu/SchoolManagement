@@ -206,10 +206,7 @@ public class School {
     public void exportFile() {
         String fileName;
         fileName = MyToys.getAString("Input file name to export: ", "File name is required.");
-        File.exportFile(fileName, "===========" + this.getName() + " University ===========");
-        for (ClassRoom classRoom : classList) {
-            File.exportFile(fileName, classRoom);
-        }
+        File.exportFile(fileName, this);
         System.out.println("File is exported successfully.");
     }
     

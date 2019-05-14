@@ -7,6 +7,7 @@ package main;
 
 import data.ClassRoom;
 import data.School;
+import java.util.ArrayList;
 import ui.Menu;
 
 /**
@@ -72,7 +73,7 @@ public class Main {
                             switch (choiceClass) {
                                 case 1:
                                     System.out.println("You are preparing to Add new Student profile.");
-                                    classRoom.addNewStudent();
+                                    classRoom.addNewStudent(fpt.getClassList());
                                     break;
                                 case 2:
                                     System.out.println("You are preparing to Update the Student profile.");

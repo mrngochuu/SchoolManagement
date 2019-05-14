@@ -24,8 +24,6 @@ public class ClassRoom implements Comparable<ClassRoom> {
         this.id = id;
         this.name = name;
     }
-    
-    
 
     public String getId() {
         return id;
@@ -65,17 +63,17 @@ public class ClassRoom implements Comparable<ClassRoom> {
         System.out.printf("|Class|%6s|%2s|\n", id, name);
     }
 
-    public void addNewStudent() {
-        String id, name;
-        int yob, pos;
+    public void addNewStudent(List<ClassRoom> classList) {
+        String id, name, className;
+        int yob;
         do {
             id = MyToys.getID("Input Student ID(AAXXXXXX): ",
                     "The format of id is AAXXXXXX (A stands for a character. X stands for a digit.)", "^[A-Z]{2}\\d{6}$");
-            pos = searchStudentById(id);
-            if (pos != -1) {
-                System.out.println("The Student ID already exists. Input another one.");
+            className = searchStudentAllClassById(classList,id);
+            if (className != null) {
+                System.out.println("The Student ID already exists in " + className + ". Input another one.");
             }
-        } while (pos != -1);
+        } while (className != null);
 
         name = MyToys.getAString("Input Student name: ", "Student name is required.");
         yob = MyToys.getAge("Input Student yob: ", "Student age must be from 18 to 40.");
@@ -86,6 +84,22 @@ public class ClassRoom implements Comparable<ClassRoom> {
 
     public void addNewStudent(String id, String name, int yob) {
         studentList.add(new Student(id, name, yob));
+    }
+
+    public String searchStudentAllClassById(List<ClassRoom> classList, String id) {
+        if (classList.isEmpty()) {
+            return null;
+        }
+
+        for (ClassRoom x : classList) {
+            List<Student> list = x.getStudentList();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getId().equalsIgnoreCase(id)) {
+                    return x.getId();
+                }
+            }
+        }
+        return null;
     }
 
     public void searchStudentById() {

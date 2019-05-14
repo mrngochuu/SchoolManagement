@@ -8,15 +8,9 @@ package util;
 import data.ClassRoom;
 import data.School;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,24 +18,14 @@ import java.util.logging.Logger;
  */
 public class File {
 
-    public static void exportFile(String fileName, ClassRoom obj) {
+    public static void exportFile(String fileName, School obj) {
 
         try {
-            FileWriter fw = new FileWriter(fileName, true);
+            FileWriter fw = new FileWriter(fileName);
             PrintWriter pw = new PrintWriter(fw);
-            pw.println(obj + "\n");
-            pw.close();
-            fw.close();
-        } catch (Exception ex) {
-            System.out.println("Create file failed");
-        }
-    }
-
-    public static void exportFile(String fileName, String str) {
-        try {
-            FileWriter fw = new FileWriter(fileName, true);
-            PrintWriter pw = new PrintWriter(fw);
-            pw.println(str + "\n");
+            for (ClassRoom classRoom : obj.getClassList()) {
+                pw.println(classRoom);
+            }
             pw.close();
             fw.close();
         } catch (Exception ex) {
